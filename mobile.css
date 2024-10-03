@@ -1,0 +1,27 @@
+body{
+    background-image: url('img/fonMobile.png');
+    background-size: cover;
+    background-position: center;
+    
+}
+.formWrapper {
+    background: rgba(255, 255, 255, 0.5); /* Полупрозрачный фон */
+    width: 90%; /* Уменьшенная ширина для мобильных */
+}
+img {
+    width: 20%; /* Уменьшаем размер картинки для мобильных */
+    max-width: 200px; /* Максимальная ширина для защиты от растяжения */
+    height: auto; /* Высота будет подстраиваться автоматически */
+    display: block; /* Убираем возможные отступы */
+    margin: 0 auto; /* Центрируем изображение */
+}
+.top-right-image {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* Подгоняет изображение в размеры контейнера */
+    z-index: 10;
+}
+
