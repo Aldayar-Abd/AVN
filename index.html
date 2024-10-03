@@ -104,30 +104,33 @@
 
             /* Google button замена текста */
             #googleSignIn {
-                font-family: inherit;
-                display: block;
-                padding: 10px; /* Отступы для кнопки */
-                width: 370px; /* Устанавливаем ширину кнопки */
-                margin: 0 auto; /* Центрируем кнопку */
-                border-radius: 8px; /* Округление кнопки */
-                background-color: white; /* Фон кнопки */
-                color: black; /* Цвет текста */
-                height: 45px; /* Высота кнопки */
-                display: flex;
-                align-items: center; /* Выравнивание текста по центру */
-                justify-content: center; /* Центрирование содержимого */
-                position: relative; /* Для размещения иконки */
-            }
+    font-family: inherit;
+    padding: 0 40px; /* Отступы для кнопки */
+    width: calc(100% - 80px); /* Уменьшаем ширину для кнопки */
+    margin: 0 auto; /* Центрируем кнопку */
+    border-radius: 8px; /* Округление кнопки */
+    background-color: white; /* Фон кнопки */
+    color: black; /* Цвет текста */
+    height: 50px; /* Высота кнопки */
+    display: flex;
+    align-items: center; /* Выравнивание текста по центру */
+    justify-content: center; /* Центрирование содержимого */
+    font-weight: bolder; /* Жирный шрифт */
+    position: relative; /* Для размещения иконки */
+    margin-top: 20px;
+}
+
 
             /* Стили для иконки */
             .googleIcon {
-                position: absolute; /* Абсолютное позиционирование иконки */
-                bottom: 8px;
-                left: 80px; /* Отступ от левого края */
-                height: 25px; /* Высота иконки */
-                width: 25px; /* Автоматическая ширина */
-                fill: #007AFF; /* Цвет иконки */
-            }
+    position: absolute; /* Абсолютное позиционирование иконки */
+    left: 10%; /* Процентный отступ от левого края для адаптивности */
+    bottom: 25%;
+    height: 25px; /* Высота иконки */
+    width: 25px; /* Ширина иконки */
+    fill: #007AFF; /* Цвет иконки */
+}
+
 
             #googleSignIn:hover {
                 background-color: #f0f0f0; /* Светло-серый фон при наведении */
